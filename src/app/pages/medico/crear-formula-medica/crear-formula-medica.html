@@ -1,0 +1,79 @@
+<div class="page-wrapper">
+  <!-- Barra superior -->
+  <header class="navbar">
+    <div class="logo">
+      <span class="text"><strong>API de Citas Médicas</strong></span>
+    </div>
+
+    <nav class="nav-links">
+      <a routerLink="/dashboard-medico">Inicio</a>
+      <a routerLink="/agenda">Agenda</a>
+      <a routerLink="/pacientes">Pacientes</a>
+      <a routerLink="/crear-formula-medica" class="active">Fórmulas</a>
+    </nav>
+
+    <div class="user-info">
+      <div class="user-avatar">CL</div>
+      <div class="user-details">
+        <span class="user-name">Dr. Carlos López</span>
+        <span class="user-role">Cardiólogo</span>
+      </div>
+      <a routerLink="/login" class="logout">Salir</a>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="main-content">
+    <h2>Nueva Prescripción Médica</h2>
+
+    <div class="form-container">
+      <!-- Selección de paciente -->
+      <div class="form-group">
+        <label for="paciente">Paciente / Cita</label>
+        <select id="paciente" [(ngModel)]="pacienteSeleccionado">
+          <option value="" disabled selected>Seleccionar paciente o cita...</option>
+          <option *ngFor="let paciente of pacientes" [value]="paciente">{{ paciente }}</option>
+        </select>
+      </div>
+
+      <!-- Medicamentos -->
+      <h3>Medicamentos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>MEDICAMENTO</th>
+            <th>CANTIDAD</th>
+            <th>INDICACIONES</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let med of medicamentos; let i = index">
+            <td>{{ med.nombre }}</td>
+            <td>{{ med.cantidad }}</td>
+            <td>{{ med.indicaciones }}</td>
+            <td><a href="#" (click)="eliminarMedicamento(i)" class="delete">Eliminar</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <a href="#" (click)="agregarMedicamento()" class="add-link">+ Agregar Medicamento</a>
+
+      <!-- Notas adicionales -->
+      <div class="form-group">
+        <label for="notas">Notas Adicionales</label>
+        <textarea
+          id="notas"
+          [(ngModel)]="notas"
+          placeholder="Escriba aquí cualquier indicación adicional para el paciente..."
+        ></textarea>
+      </div>
+
+      <!-- Botones -->
+      <div class="buttons">
+        <button class="cancelar" (click)="cancelar()">Cancelar</button>
+        <button class="guardar" (click)="guardarFormula()">Guardar Prescripción</button>
+      </div>
+    </div>
+  </main>
+</div>

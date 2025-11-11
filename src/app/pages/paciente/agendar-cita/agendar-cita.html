@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agendar Cita</title>
+  <link rel="stylesheet" href="agendar-cita.css" />
+</head>
+<body>
+  <!-- Barra superior -->
+  <header class="navbar">
+    <div class="logo">
+      <span class="text"><strong>API de Citas Médicas</strong></span>
+    </div>
+    <nav class="nav-links">
+      <a href="#" class="active">Inicio</a>
+      <a href="#">Mis Citas</a>
+      <a href="#">Mi Perfil</a>
+      <a href="#">Mis Fórmulas</a>
+    </nav>
+    <div class="user-info">
+      <span class="user-name">Ana Sofía Pérez</span>
+      <span class="user-role">Paciente</span>
+      <a href="#" class="logout">Salir</a>
+    </div>
+  </header>
+
+  <!-- Contenedor principal -->
+  <main class="container">
+    <div class="card">
+      <h2>Agendar Nueva Cita</h2>
+      <p>Completa el formulario para encontrar un horario disponible.</p>
+
+      <!-- Formulario con enlace Angular -->
+      <form (ngSubmit)="confirmarCita()">
+        <input
+          type="date"
+          [(ngModel)]="fecha"
+          name="fecha"
+          required
+        />
+
+        <input
+          type="time"
+          [(ngModel)]="hora"
+          name="hora"
+          required
+        />
+
+        <select
+          [(ngModel)]="especialidad"
+          name="especialidad"
+          required
+        >
+          <option value="" disabled selected>Seleccionar especialidad</option>
+          <option>Cardiología</option>
+          <option>Dermatología</option>
+          <option>Medicina General</option>
+        </select>
+
+        <select
+          [(ngModel)]="medico"
+          name="medico"
+          required
+        >
+          <option value="" disabled selected>Seleccionar médico</option>
+          <option>Dr. Carlos Vargas</option>
+          <option>Dra. Ana Lucía Pérez</option>
+        </select>
+
+        <button type="submit" class="btn-primary">Confirmar Cita</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

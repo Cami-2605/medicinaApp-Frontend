@@ -1,0 +1,217 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 12px 40px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #007bff;
+  font-size: 16px;
+}
+
+.nav-links a {
+  margin: 0 12px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+}
+
+.nav-links a.active {
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 4px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  padding: 8px 10px;
+  border-radius: 50%;
+}
+
+.user-details {
+  text-align: right;
+}
+
+.user-name {
+  font-weight: 500;
+}
+
+.user-role {
+  font-size: 13px;
+  color: gray;
+}
+
+.logout {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* CONTENIDO PRINCIPAL */
+.main-content {
+  padding: 30px 60px;
+}
+
+.main-content h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+/* SECCIONES PRINCIPALES */
+.dashboard {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* CALENDARIO */
+.calendar-section {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 60%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.today-link {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.calendar table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  color: #444;
+}
+
+.calendar th {
+  padding: 6px;
+  color: gray;
+}
+
+.calendar td {
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.calendar td.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+/* CITAS DEL DÍA */
+.appointments {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 40%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.appointments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.filter-buttons button {
+  background: #f1f1f1;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filter-buttons .active {
+  background: #007bff;
+  color: white;
+}
+
+.appointment-card {
+  background: #f8f9fb;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
+
+.appointment-card strong {
+  display: block;
+  font-weight: 600;
+}
+
+.appointment-card span {
+  color: #555;
+  font-size: 14px;
+}
+
+.appointment-card p {
+  color: gray;
+  font-size: 13px;
+}
+
+.blue { border-left: 4px solid #007bff; }
+.green { border-left: 4px solid #28a745; }
+.orange { border-left: 4px solid #f39c12; }
+
+/* TABLA DE PRÓXIMAS CITAS */
+.next-appointments {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.next-appointments table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.next-appointments th, .next-appointments td {
+  padding: 10px 8px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.details-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}

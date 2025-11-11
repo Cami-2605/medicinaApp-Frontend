@@ -1,0 +1,101 @@
+<header class="navbar">
+  <div class="logo">
+    <span class="text"><strong>API de Citas Médicas</strong></span>
+  </div>
+
+  <nav class="nav-links">
+    <a routerLink="/medico-dashboard" routerLinkActive="active">Inicio</a>
+    <a routerLink="/agenda" routerLinkActive="active">Agenda</a>
+    <a routerLink="/pacientes" routerLinkActive="active">Mis Pacientes</a>
+    <a routerLink="/crear-formula-medica" routerLinkActive="active">Mis Fórmulas</a>
+  </nav>
+
+  <div class="user-info">
+    <div class="user-avatar">ER</div>
+    <div class="user-details">
+      <span class="user-name">Dr. Eduardo Ríos</span>
+      <span class="user-role">Cardiólogo</span>
+    </div>
+    <a href="#" class="logout" (click)="logout()">Salir</a>
+  </div>
+</header>
+
+<main class="main-content">
+  <h2>Agenda y Citas</h2>
+
+  <div class="dashboard">
+    <!-- CALENDARIO -->
+    <section class="calendar-section">
+      <div class="calendar-header">
+        <h3>{{ mesActual }}</h3>
+        <a href="#" class="today-link" (click)="goToToday($event)">Hoy</a>
+      </div>
+
+      <div class="calendar">
+        <table>
+          <thead>
+            <tr>
+              <th>D</th><th>L</th><th>M</th><th>M</th><th>J</th><th>V</th><th>S</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let semana of calendario">
+              <td *ngFor="let dia of semana" 
+                  [class.selected]="dia === diaSeleccionado"
+                  (click)="dia && seleccionarDia(dia)">
+                {{ dia || '' }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CITAS DEL DÍA -->
+    <section class="appointments">
+      <div class="appointments-header">
+        <h3>Citas para el {{ diaSeleccionado }} de {{ mesActual }}</h3>
+        <div class="filter-buttons">
+          <button *ngFor="let filtro of filtros" 
+                  [class.active]="filtroActivo === filtro"
+                  (click)="setFiltro(filtro)">
+            {{ filtro }}
+          </button>
+        </div>
+      </div>
+
+      <div *ngFor="let cita of citasFiltradas" 
+           class="appointment-card" 
+           [ngClass]="cita.color">
+        <strong>{{ cita.paciente }}</strong>
+        <span>{{ cita.hora }}</span>
+        <p>{{ cita.motivo }}</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- PRÓXIMAS CITAS -->
+  <section class="next-appointments">
+    <h3>Próximas citas</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Paciente</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Motivo</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cita of proximasCitas">
+          <td>{{ cita.paciente }}</td>
+          <td>{{ cita.fecha }}</td>
+          <td>{{ cita.hora }}</td>
+          <td>{{ cita.motivo }}</td>
+          <td><a href="#" class="details-link" (click)="verDetalles(cita)">Ver detalles</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>

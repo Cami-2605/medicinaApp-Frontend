@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 40px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #007bff;
+  font-size: 16px;
+}
+
+.nav-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+}
+
+.nav-links a.active {
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 4px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-name {
+  font-weight: 500;
+}
+
+.user-role {
+  font-size: 13px;
+  color: gray;
+}
+
+.logout {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Contenedor central */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+}
+
+.card {
+  background-color: #fff;
+  width: 380px;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.card h2 {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.card p {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+input:focus, select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0067d9;
+}

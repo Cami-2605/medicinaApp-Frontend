@@ -1,1 +1,143 @@
-<p>registro-medicos works!</p>
+<header class="navbar">
+  <div class="logo" routerLink="/admin-dashboard" style="cursor: pointer">
+    API de Citas Médicas
+  </div>
+  <nav class="nav-links">
+    <a routerLink="/admin-dashboard">Inicio</a>
+    <a routerLink="/registro-medicos" class="active">Usuarios</a>
+    <a routerLink="/especialidades">Especialidades</a>
+    <a routerLink="/reportes">Reportes</a>
+    <a routerLink="/medicamentos">Medicamentos</a>
+  </nav>
+  <div class="user-avatar">
+    <img src="https://via.placeholder.com/35" alt="avatar" />
+  </div>
+</header>
+
+<main class="container">
+  <h2 class="title">Crear Nuevo Perfil de Médico</h2>
+  <p class="subtitle">
+    Complete el formulario para registrar un nuevo médico en el sistema.
+  </p>
+
+  <form class="form" (ngSubmit)="registrarMedico()">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="nombres">Nombres</label>
+        <input
+          type="text"
+          id="nombres"
+          placeholder="Ej: Juan"
+          [(ngModel)]="nuevoMedico.nombres"
+          name="nombres"
+        />
+      </div>
+      <div class="form-group">
+        <label for="apellidos">Apellidos</label>
+        <input
+          type="text"
+          id="apellidos"
+          placeholder="Ej: Pérez"
+          [(ngModel)]="nuevoMedico.apellidos"
+          name="apellidos"
+        />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="documento">Documento</label>
+        <input
+          type="text"
+          id="documento"
+          placeholder="Ej: 12345678X"
+          [(ngModel)]="nuevoMedico.documento"
+          name="documento"
+        />
+      </div>
+      <div class="form-group">
+        <label for="fecha">Fecha de nacimiento</label>
+        <input
+          type="date"
+          id="fecha"
+          [(ngModel)]="nuevoMedico.fechaNacimiento"
+          name="fechaNacimiento"
+        />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="ejemplo@correo.com"
+          [(ngModel)]="nuevoMedico.email"
+          name="email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input
+          type="tel"
+          id="telefono"
+          placeholder="+34 600 000 000"
+          [(ngModel)]="nuevoMedico.telefono"
+          name="telefono"
+        />
+      </div>
+    </div>
+
+    <div class="form-group full">
+      <label for="direccion">Dirección</label>
+      <input
+        type="text"
+        id="direccion"
+        placeholder="Calle Falsa 123, Ciudad"
+        [(ngModel)]="nuevoMedico.direccion"
+        name="direccion"
+      />
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="especialidad">Especialidad</label>
+        <select
+          id="especialidad"
+          [(ngModel)]="nuevoMedico.especialidad"
+          name="especialidad"
+        >
+          <option value="">Seleccione una especialidad</option>
+          <option>Cardiología</option>
+          <option>Pediatría</option>
+          <option>Dermatología</option>
+          <option>Neurología</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="usuario">Nombre de Usuario</label>
+        <input
+          type="text"
+          id="usuario"
+          placeholder="Ej: juan.perez"
+          [(ngModel)]="nuevoMedico.usuario"
+          name="usuario"
+        />
+      </div>
+    </div>
+
+    <div class="form-group full">
+      <label for="contraseña">Contraseña</label>
+      <input
+        type="password"
+        id="contraseña"
+        placeholder="********"
+        [(ngModel)]="nuevoMedico.contrasena"
+        name="contrasena"
+      />
+    </div>
+
+    <button type="submit" class="btn-submit">Registrar Médico</button>
+  </form>
+</main>

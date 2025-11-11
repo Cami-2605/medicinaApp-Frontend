@@ -1,0 +1,67 @@
+<header class="navbar">
+  <div class="logo">API de Citas Médicas</div>
+
+  <nav class="nav-links">
+    <a routerLink="/dashboard-administrador" routerLinkActive="active">Inicio</a>
+    <a routerLink="/registro-pacientes" routerLinkActive="active">Usuarios</a>
+    <a routerLink="/agregar-editar-especialidad" routerLinkActive="active">Especialidades</a>
+    <a routerLink="/reportes" routerLinkActive="active">Reportes</a>
+    <a routerLink="/agregar-editar-medicamento" routerLinkActive="active">Medicamentos</a>
+  </nav>
+
+  <button class="logout" routerLink="/login">Cerrar sesión</button>
+</header>
+
+<main class="container">
+  <h2 class="title">Panel de control</h2>
+  <p class="subtitle">Bienvenido, Administrador.</p>
+
+  <section class="grid">
+    <div class="card">
+      <h3>Gestión de usuarios</h3>
+      <div class="buttons">
+        <button class="btn blue" routerLink="/registro-pacientes">Crear médico</button>
+        <button class="btn gray" routerLink="/registro-pacientes">Crear administrador</button>
+        <button class="btn edit" routerLink="/registro-pacientes">Editar paciente</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Gestión de Catálogos</h3>
+      <div class="buttons">
+        <button class="btn blue" routerLink="/agregar-editar-especialidad">
+          Gestionar especialidades
+        </button>
+        <button class="btn blue" routerLink="/agregar-editar-medicamento">
+          Gestionar medicamentos
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="reports">
+    <div class="report-card active">
+      <div class="icon">📅</div>
+      <div>
+        <p class="number">15</p>
+        <p class="label">Citas activas hoy</p>
+      </div>
+    </div>
+
+    <div class="report-card canceled">
+      <div class="icon">❌</div>
+      <div>
+        <p class="number">3</p>
+        <p class="label">Citas canceladas</p>
+      </div>
+    </div>
+
+    <div class="report-card patients">
+      <div class="icon">👤</div>
+      <div>
+        <p class="number">120</p>
+        <p class="label">Pacientes activos</p>
+      </div>
+    </div>
+  </section>
+</main>

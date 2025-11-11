@@ -1,0 +1,51 @@
+<main class="container">
+  <h2 class="title">Agregar/Editar Especialidad</h2>
+
+  <form class="form" (ngSubmit)="guardar()">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input
+        type="text"
+        id="nombre"
+        placeholder="Ingrese el nombre de la especialidad"
+        [(ngModel)]="especialidad.nombre"
+        name="nombre"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <textarea
+        id="descripcion"
+        rows="3"
+        placeholder="Ingrese una breve descripción de la especialidad"
+        [(ngModel)]="especialidad.descripcion"
+        name="descripcion"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="area">Área médica</label>
+      <input
+        type="text"
+        id="area"
+        placeholder="Ej: Cardiología, Neurología, Pediatría"
+        [(ngModel)]="especialidad.area"
+        name="area"
+      />
+    </div>
+
+    <div class="form-group estado">
+      <label>Estado</label>
+      <div class="estado-options">
+        <label><input type="radio" name="estado" value="activo" [(ngModel)]="especialidad.estado" /> Activo</label>
+        <label><input type="radio" name="estado" value="inactivo" [(ngModel)]="especialidad.estado" /> Inactivo</label>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" class="btn cancel" (click)="cancelar()">Cancelar</button>
+      <button type="submit" class="btn save">Guardar</button>
+    </div>
+  </form>
+</main>
