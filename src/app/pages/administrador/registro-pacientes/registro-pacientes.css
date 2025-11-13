@@ -1,127 +1,121 @@
-/* General */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f6fa;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f6f9;
   color: #333;
 }
 
-/* Header */
-.header {
-  background: white;
+/* NAVBAR */
+.navbar {
+  background-color: #ffffff;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
+  justify-content: space-between;
+  padding: 12px 24px;
   border-bottom: 1px solid #ddd;
 }
 
-.header .logo {
-  font-weight: 600;
+.logo {
+  font-weight: bold;
   color: #007bff;
-  font-size: 18px;
+  font-size: 1.1em;
 }
 
-.header .login-btn {
+.nav-links a {
+  margin: 0 10px;
   text-decoration: none;
-  background-color: #007bff;
-  color: white;
-  padding: 8px 18px;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: background 0.3s;
+  color: #333;
+  font-weight: 500;
 }
 
-.header .login-btn:hover {
-  background-color: #005ecb;
+.nav-links a.active {
+  color: #007bff;
+  font-weight: bold;
 }
 
-/* Main container */
+.user-avatar img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+/* CONTAINER */
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 90vh;
-}
-
-/* Form */
-.register-form {
-  background: white;
+  max-width: 900px;
+  background-color: #fff;
+  margin: 40px auto;
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  width: 400px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.register-form h2 {
-  text-align: center;
+.title {
+  font-size: 1.6em;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: gray;
   margin-bottom: 25px;
-  font-size: 20px;
-  color: #222;
 }
 
-/* Form layout */
+/* FORMULARIO */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .form-row {
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 
 .form-group {
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+}
+
+.form-group.full {
+  width: 100%;
 }
 
 label {
-  font-size: 13px;
-  margin-bottom: 4px;
-  color: #555;
+  font-weight: 500;
+  margin-bottom: 5px;
 }
 
-input {
+input, select {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 0.95em;
+  background-color: #fdfdfd;
 }
 
-input:focus {
-  outline: none;
+input:focus, select:focus {
   border-color: #007bff;
+  outline: none;
 }
 
-/* Button */
-.btn {
+.btn-submit {
+  align-self: flex-end;
   background-color: #007bff;
-  color: white;
+  color: #fff;
   border: none;
-  padding: 12px;
+  padding: 12px 20px;
   border-radius: 6px;
-  width: 100%;
-  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s;
+  margin-top: 10px;
 }
 
-.btn:hover {
-  background-color: #005ecb;
-}
-
-/* Login link */
-.login-link {
-  text-align: center;
-  font-size: 13px;
-  margin-top: 15px;
-  color: #555;
-}
-
-.login-link a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.login-link a:hover {
-  text-decoration: underline;
+.btn-submit:hover {
+  background-color: #005dc1;
 }

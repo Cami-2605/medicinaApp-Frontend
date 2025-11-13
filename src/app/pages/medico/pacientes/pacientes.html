@@ -1,0 +1,50 @@
+<header class="navbar">
+  <div class="logo" routerLink="/admin-dashboard" style="cursor: pointer">
+    API de Citas Médicas
+  </div>
+</header>
+
+<div class="main-content">
+  <h2>Pacientes Registrados</h2>
+
+  <!-- Tabla de pacientes -->
+  <div class="next-appointments">
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Documento</th>
+          <th>Correo</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let paciente of pacientes">
+          <td>{{ paciente.nombre }}</td>
+          <td>{{ paciente.apellido }}</td>
+          <td>{{ paciente.documento }}</td>
+          <td>{{ paciente.correo }}</td>
+          <td>
+            <a href="#" class="details-link" (click)="verDetalles(paciente)">Ver Detalles</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Detalles del paciente -->
+  <div *ngIf="pacienteSeleccionado" class="appointments" style="margin-top: 30px;">
+    <div class="appointments-header">
+      <h3>Detalles del Paciente</h3>
+      <button class="filter-buttons" (click)="cerrarDetalles()">Cerrar</button>
+    </div>
+
+    <div class="appointment-card blue">
+      <strong>Nombre:</strong> {{ pacienteSeleccionado.nombre }}<br />
+      <strong>Apellidos:</strong> {{ pacienteSeleccionado.apellido }}<br />
+      <strong>Documento:</strong> {{ pacienteSeleccionado.documento }}<br />
+      <strong>Correo:</strong> {{ pacienteSeleccionado.correo }}
+    </div>
+  </div>
+</div>

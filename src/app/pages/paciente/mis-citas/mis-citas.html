@@ -1,0 +1,95 @@
+<header class="header">
+  <div class="logo">API de Citas Médicas</div>
+
+  <img
+    src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+    alt="user"
+    class="user-icon"
+  />
+</header>
+
+<div class="main-content">
+  <div class="left-section">
+    <div class="welcome">
+      <h2>Mis citas</h2>
+      <button class="btn-blue" (click)="volverDashboard()">Volver</button>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Citas registradas</h3>
+        <div class="tabs">
+          <button 
+            class="tab" 
+            [class.active]="vistaCitas === 'proximas'" 
+            (click)="cambiarVista('proximas')">
+            Próximas
+          </button>
+          <button 
+            class="tab" 
+            [class.active]="vistaCitas === 'pasadas'" 
+            (click)="cambiarVista('pasadas')">
+            Pasadas
+          </button>
+        </div>
+      </div>
+
+      <table *ngIf="vistaCitas === 'proximas'">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Médico</th>
+            <th>Especialidad</th>
+            <th>Estado</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cita of citasProximas">
+            <td>{{ cita.id }}</td>
+            <td>{{ cita.fecha }}</td>
+            <td>{{ cita.hora }}</td>
+            <td>{{ cita.medico }}</td>
+            <td>{{ cita.especialidad }}</td>
+            <td class="status confirmed">{{ cita.estado }}</td>
+            <td>
+              <a class="cancel" href="#" (click)="cancelarCita(cita)">Cancelar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table *ngIf="vistaCitas === 'pasadas'">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Médico</th>
+            <th>Especialidad</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cita of citasPasadas">
+            <td>{{ cita.id }}</td>
+            <td>{{ cita.fecha }}</td>
+            <td>{{ cita.hora }}</td>
+            <td>{{ cita.medico }}</td>
+            <td>{{ cita.especialidad }}</td>
+            <td class="status confirmed">{{ cita.estado }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="profile-card">
+    <h3>Paciente</h3>
+    <p><strong>Nombre:</strong> {{ nombrePaciente }}</p>
+    <p><strong>Total próximas:</strong> {{ citasProximas.length }}</p>
+    <p><strong>Total pasadas:</strong> {{ citasPasadas.length }}</p>
+  </div>
+</div>

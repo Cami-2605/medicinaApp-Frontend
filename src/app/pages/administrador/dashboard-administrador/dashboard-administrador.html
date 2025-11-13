@@ -5,8 +5,8 @@
     <a routerLink="/dashboard-administrador" routerLinkActive="active">Inicio</a>
     <a routerLink="/registro-pacientes" routerLinkActive="active">Usuarios</a>
     <a routerLink="/agregar-editar-especialidad" routerLinkActive="active">Especialidades</a>
-    <a routerLink="/reportes" routerLinkActive="active">Reportes</a>
     <a routerLink="/agregar-editar-medicamento" routerLinkActive="active">Medicamentos</a>
+    <a routerLink="/agregar-administrador" routerLinkActive="active">Administradores</a>
   </nav>
 
   <button class="logout" routerLink="/login">Cerrar sesión</button>
@@ -20,14 +20,14 @@
     <div class="card">
       <h3>Gestión de usuarios</h3>
       <div class="buttons">
-        <button class="btn blue" routerLink="/registro-pacientes">Crear médico</button>
-        <button class="btn gray" routerLink="/registro-pacientes">Crear administrador</button>
+        <button class="btn blue" routerLink="/registro-medicos">Crear médico</button>
+        <button class="btn gray" routerLink="/agregar-administrador">Crear administrador</button>
         <button class="btn edit" routerLink="/registro-pacientes">Editar paciente</button>
       </div>
     </div>
 
     <div class="card">
-      <h3>Gestión de Catálogos</h3>
+      <h3>Gestión de catálogos</h3>
       <div class="buttons">
         <button class="btn blue" routerLink="/agregar-editar-especialidad">
           Gestionar especialidades

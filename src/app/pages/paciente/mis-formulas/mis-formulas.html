@@ -1,0 +1,51 @@
+<header class="header">
+  <div class="logo">API de Citas Médicas</div>
+
+  <img
+    src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+    alt="user"
+    class="user-icon"
+  />
+</header>
+
+<main class="main-content">
+  <section class="left-section">
+    <div class="welcome">
+      <h2>Hola, {{ nombrePaciente }}</h2>
+      <button class="btn-blue" (click)="regresarDashboard()">Volver</button>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Mis Fórmulas Médicas</h3>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Médico</th>
+            <th>Especialidad</th>
+            <th>Medicamento</th>
+            <th>Dosis</th>
+            <th>Duración</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let formula of formulas">
+            <td>{{ formula.fecha }}</td>
+            <td>{{ formula.medico }}</td>
+            <td>{{ formula.especialidad }}</td>
+            <td>{{ formula.medicamento }}</td>
+            <td>{{ formula.dosis }}</td>
+            <td>{{ formula.duracion }}</td>
+            <td>
+              <a class="details" (click)="verDetalles(formula)">Ver detalles</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>

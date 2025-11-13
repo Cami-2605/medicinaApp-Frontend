@@ -10,41 +10,7 @@ body {
   color: #333;
 }
 
-/* NAVBAR */
-.navbar {
-  background-color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 24px;
-  border-bottom: 1px solid #ddd;
-}
-
-.logo {
-  font-weight: bold;
-  color: #007bff;
-  font-size: 1.1em;
-}
-
-.nav-links a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-}
-
-.nav-links a.active {
-  color: #007bff;
-  font-weight: bold;
-}
-
-.user-avatar img {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-}
-
-/* CONTAINER */
+/* CONTENEDOR PRINCIPAL */
 .container {
   max-width: 700px;
   background-color: #fff;
@@ -54,9 +20,16 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+/* TÍTULOS */
 .title {
   font-size: 1.6em;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: gray;
   margin-bottom: 25px;
+  font-size: 1.1em;
 }
 
 /* FORMULARIO */
@@ -64,6 +37,11 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
 }
 
 label {
@@ -83,18 +61,6 @@ input, textarea {
 input:focus, textarea:focus {
   border-color: #007bff;
   outline: none;
-}
-
-/* ESTADO */
-.estado-options {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  margin-top: 8px;
-}
-
-.estado-options input {
-  margin-right: 5px;
 }
 
 /* BOTONES */
@@ -128,29 +94,9 @@ input:focus, textarea:focus {
   background-color: #005dc1;
 }
 
-/* SELECT MÚLTIPLE DE MÉDICOS */
-select[multiple] {
-  width: 100%;
-  min-height: 120px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: #fdfdfd;
-  font-size: 0.95em;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-select[multiple]:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
-  outline: none;
-}
-
-select[multiple] option {
-  padding: 6px;
-  border-radius: 4px;
-}
-
-select[multiple] option:hover {
-  background-color: #eaf3ff;
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .container {
+    padding: 25px;
+  }
 }

@@ -1,0 +1,38 @@
+<header class="navbar">
+  <div class="logo" routerLink="/admin-dashboard" style="cursor: pointer">
+    API de Citas Médicas
+  </div>
+</header>
+
+<div class="next-appointments">
+  <h2>Agenda de citas</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Paciente</th>
+        <th>Hora</th>
+        <th>Fecha</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cita of citas">
+        <td>{{ cita.paciente }}</td>
+        <td>{{ cita.hora }}</td>
+        <td>{{ cita.fecha }}</td>
+        <td>
+          <a href="#" class="details-link" (click)="verDetalles(cita)">Ver detalles</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="citaSeleccionada" class="appointment-card blue" style="margin-top: 20px;">
+    <strong>Detalles de la cita</strong>
+    <p><b>Paciente:</b> {{ citaSeleccionada.paciente }}</p>
+    <p><b>Hora:</b> {{ citaSeleccionada.hora }}</p>
+    <p><b>Fecha:</b> {{ citaSeleccionada.fecha }}</p>
+    <p><b>Motivo:</b> {{ citaSeleccionada.motivo }}</p>
+  </div>
+</div>

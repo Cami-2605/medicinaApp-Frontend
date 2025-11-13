@@ -1,46 +1,43 @@
+<header class="navbar">
+  <div class="logo" routerLink="/admin-dashboard" style="cursor: pointer">
+    API de Citas Médicas
+  </div>
+</header>
+
 <main class="container">
   <h2 class="title">Agregar/Editar Especialidad</h2>
 
   <form class="form" (ngSubmit)="guardar()">
     <div class="form-group">
-      <label for="nombre">Nombre</label>
+      <label for="id">ID</label>
       <input
-        type="text"
-        id="nombre"
-        placeholder="Ingrese el nombre de la especialidad"
-        [(ngModel)]="especialidad.nombre"
-        name="nombre"
+        type="number"
+        id="id"
+        placeholder="Ingrese el ID de la especialidad"
+        [(ngModel)]="especialidad.id"
+        name="id"
       />
     </div>
 
     <div class="form-group">
-      <label for="descripcion">Descripción</label>
-      <textarea
-        id="descripcion"
-        rows="3"
-        placeholder="Ingrese una breve descripción de la especialidad"
-        [(ngModel)]="especialidad.descripcion"
-        name="descripcion"
-      ></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="area">Área médica</label>
+      <label for="especialidad">Especialidad</label>
       <input
         type="text"
-        id="area"
+        id="especialidad"
         placeholder="Ej: Cardiología, Neurología, Pediatría"
-        [(ngModel)]="especialidad.area"
-        name="area"
+        [(ngModel)]="especialidad.especialidad"
+        name="especialidad"
       />
     </div>
 
-    <div class="form-group estado">
-      <label>Estado</label>
-      <div class="estado-options">
-        <label><input type="radio" name="estado" value="activo" [(ngModel)]="especialidad.estado" /> Activo</label>
-        <label><input type="radio" name="estado" value="inactivo" [(ngModel)]="especialidad.estado" /> Inactivo</label>
-      </div>
+    <div class="form-group">
+      <label for="medico">Médicos asignados</label>
+      <select id="medico" multiple [(ngModel)]="especialidad.medicosSeleccionados" name="medicosSeleccionados">
+        <option *ngFor="let medico of medicos" [value]="medico.id">
+          {{ medico.nombre }} - {{ medico.especialidad }}
+        </option>
+      </select>
+      <small>Puedes seleccionar varios médicos manteniendo presionada la tecla Ctrl (Windows) o Cmd (Mac).</small>
     </div>
 
     <div class="buttons">

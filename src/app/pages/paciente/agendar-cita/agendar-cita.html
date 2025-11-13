@@ -7,23 +7,12 @@
   <link rel="stylesheet" href="agendar-cita.css" />
 </head>
 <body>
-  <!-- Barra superior -->
-  <header class="navbar">
-    <div class="logo">
-      <span class="text"><strong>API de Citas Médicas</strong></span>
-    </div>
-    <nav class="nav-links">
-      <a href="#" class="active">Inicio</a>
-      <a href="#">Mis Citas</a>
-      <a href="#">Mi Perfil</a>
-      <a href="#">Mis Fórmulas</a>
-    </nav>
-    <div class="user-info">
-      <span class="user-name">Ana Sofía Pérez</span>
-      <span class="user-role">Paciente</span>
-      <a href="#" class="logout">Salir</a>
-    </div>
-  </header>
+
+<header class="navbar">
+  <div class="logo" routerLink="/dashboard-paciente" style="cursor: pointer">
+    API de Citas Médicas
+  </div>
+</header>
 
   <!-- Contenedor principal -->
   <main class="container">
