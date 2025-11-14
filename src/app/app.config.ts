@@ -2,18 +2,26 @@ import {
   ApplicationConfig,
   provideBrowserGlobalErrorListeners,
   provideZonelessChangeDetection,
+  importProvidersFrom,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HttpToastInterceptor } from './core/interceptors/toastService';
+import { ToastService } from './components/toast/service/toast.service';
+import { provideClientHydration } from '@angular/platform-browser';
+import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
-    provideClientHydration(withEventReplay()),
+    provideHttpClient(withInterceptors([JwtInterceptor])),
+    importProvidersFrom(FormsModule, ReactiveFormsModule),
+    provideHttpClient(withInterceptors([HttpToastInterceptor])),
+    ToastService,
   ],
 };
 
