@@ -1,0 +1,6 @@
+export enum EstadoCita {
+  AGENDADA = 'AGENDADA',
+  EN_REVISION = 'EN_REVISION',
+  CANCELADA = 'CANCELADA',
+  COMPLETADA = 'COMPLETADA',
+}
