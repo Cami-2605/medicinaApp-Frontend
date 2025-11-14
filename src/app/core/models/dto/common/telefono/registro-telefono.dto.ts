@@ -1,3 +1,3 @@
 export interface RegistroTelefonoDto {
-  number: string;
+  numero: string;
 }

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import {
   FormsModule,
   ReactiveFormsModule,
@@ -12,6 +11,8 @@ import { AuthService } from '../../../core/services/auth.service';
 import { LoginDto } from '../../../core/models/dto/auth/login.dto';
 import { ValidarLoginService } from './services/validar-login.service';
 import { ToastService } from '../../../components/toast/service/toast.service';
+import { provideHttpClient } from '@angular/common/http';
+import { PacienteCitaService } from '../../../core/services/paciente/paciente-cita.service';
 
 @Component({
   selector: 'app-login',
@@ -27,8 +28,7 @@ export class LoginComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private validarLoginService: ValidarLoginService,
-    private toast: ToastService,
-    private router: Router
+    private toast: ToastService
   ) {
     // Create login form
     // Crear formulario de login
@@ -55,6 +55,7 @@ export class LoginComponent {
 
     // Call AuthService to connect with backend
     // Llamar al AuthService para conectar con el backend
+
     this.authService.login(loginDto).subscribe({
       next: (tokenDto) => {
         // Save token

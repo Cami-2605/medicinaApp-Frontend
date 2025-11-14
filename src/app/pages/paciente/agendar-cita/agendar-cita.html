@@ -1,65 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agendar Cita</title>
-  <link rel="stylesheet" href="agendar-cita.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agendar Cita</title>
+    <link rel="stylesheet" href="agendar-cita.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo" routerLink="/dashboard-paciente" style="cursor: pointer">
+        API de Citas Médicas
+      </div>
+    </header>
 
-<header class="navbar">
-  <div class="logo" routerLink="/dashboard-paciente" style="cursor: pointer">
-    API de Citas Médicas
-  </div>
-</header>
+    <!-- Contenedor principal -->
+    <main class="container">
+      <div class="card">
+        <h2>Agendar Nueva Cita</h2>
+        <p>Completa el formulario para encontrar un horario disponible.</p>
 
-  <!-- Contenedor principal -->
-  <main class="container">
-    <div class="card">
-      <h2>Agendar Nueva Cita</h2>
-      <p>Completa el formulario para encontrar un horario disponible.</p>
+        <form (ngSubmit)="confirmarCita()">
+          <textarea
+            placeholder="Observaciones (opcional)"
+            [(ngModel)]="observaciones"
+            name="observaciones"
+          ></textarea>
 
-      <!-- Formulario con enlace Angular -->
-      <form (ngSubmit)="confirmarCita()">
-        <input
-          type="date"
-          [(ngModel)]="fecha"
-          name="fecha"
-          required
-        />
+          <select
+            [(ngModel)]="selectedEspecialidadId"
+            name="especialidad"
+            (change)="onEspecialidadChange()"
+            required
+          >
+            <option value="" disabled selected>Seleccionar especialidad</option>
+            <option *ngFor="let e of especialidades" [value]="e.id">{{ e.especialidad }}</option>
+          </select>
 
-        <input
-          type="time"
-          [(ngModel)]="hora"
-          name="hora"
-          required
-        />
+          <select [(ngModel)]="selectedMedicoId" name="medico" (change)="onMedicoChange()" required>
+            <option value="" disabled selected>Seleccionar médico</option>
+            <option *ngFor="let m of medicos" [value]="m.id">{{ m.nombre }}</option>
+          </select>
 
-        <select
-          [(ngModel)]="especialidad"
-          name="especialidad"
-          required
-        >
-          <option value="" disabled selected>Seleccionar especialidad</option>
-          <option>Cardiología</option>
-          <option>Dermatología</option>
-          <option>Medicina General</option>
-        </select>
+          <select [(ngModel)]="selectedAgendaId" name="agenda" required>
+            <option value="" disabled selected>Seleccionar horario</option>
+            <option *ngFor="let a of agendas" [value]="a.id">
+              {{ a.dia }} - {{ a.horaInicio }} a {{ a.horaFin }}
+            </option>
+          </select>
 
-        <select
-          [(ngModel)]="medico"
-          name="medico"
-          required
-        >
-          <option value="" disabled selected>Seleccionar médico</option>
-          <option>Dr. Carlos Vargas</option>
-          <option>Dra. Ana Lucía Pérez</option>
-        </select>
-
-        <button type="submit" class="btn-primary">Confirmar Cita</button>
-      </form>
-    </div>
-  </main>
-</body>
+          <button type="submit" class="btn-primary">Confirmar Cita</button>
+        </form>
+      </div>
+    </main>
+  </body>
 </html>

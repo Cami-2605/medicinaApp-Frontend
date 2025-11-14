@@ -1,7 +1,5 @@
 <header class="navbar">
-  <div class="logo" routerLink="/admin-dashboard" style="cursor: pointer">
-    API de Citas Médicas
-  </div>
+  <div class="logo" routerLink="/admin-dashboard" style="cursor: pointer">API de Citas Médicas</div>
 </header>
 
 <main class="container">
@@ -11,18 +9,36 @@
     <div class="form-row">
       <div class="form-group">
         <label>Nombres</label>
-        <input type="text" placeholder="Ingresa tus nombres" required [(ngModel)]="paciente.nombres" name="nombres" />
+        <input
+          type="text"
+          placeholder="Ingresa tus nombres"
+          required
+          [(ngModel)]="paciente.nombres"
+          name="nombres"
+        />
       </div>
       <div class="form-group">
         <label>Apellidos</label>
-        <input type="text" placeholder="Ingresa tus apellidos" required [(ngModel)]="paciente.apellidos" name="apellidos" />
+        <input
+          type="text"
+          placeholder="Ingresa tus apellidos"
+          required
+          [(ngModel)]="paciente.apellidos"
+          name="apellidos"
+        />
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group">
         <label>Documento</label>
-        <input type="text" placeholder="Ingresa tu documento" required [(ngModel)]="paciente.documento" name="documento" />
+        <input
+          type="text"
+          placeholder="Ingresa tu documento"
+          required
+          [(ngModel)]="paciente.documento"
+          name="documento"
+        />
       </div>
       <div class="form-group">
         <label>Fecha de nacimiento</label>
@@ -32,32 +48,60 @@
 
     <div class="form-group">
       <label>Email</label>
-      <input type="email" placeholder="ejemplo@correo.com" required [(ngModel)]="paciente.email" name="email" />
+      <input
+        type="email"
+        placeholder="ejemplo@correo.com"
+        required
+        [(ngModel)]="paciente.email"
+        name="email"
+      />
     </div>
 
     <div class="form-row">
       <div class="form-group">
         <label>Nombre de usuario</label>
-        <input type="text" placeholder="Elige un nombre de usuario" required [(ngModel)]="paciente.usuario" name="usuario" />
+        <input
+          type="text"
+          placeholder="Elige un nombre de usuario"
+          required
+          [(ngModel)]="paciente.usuario"
+          name="usuario"
+        />
       </div>
       <div class="form-group">
         <label>Teléfono</label>
-        <input type="text" placeholder="Ingresa tu teléfono" required [(ngModel)]="paciente.telefono" name="telefono" />
+        <input
+          type="text"
+          placeholder="Ingresa tu teléfono"
+          required
+          [(ngModel)]="paciente.telefono"
+          name="telefono"
+        />
       </div>
     </div>
 
     <div class="form-group">
       <label>Dirección</label>
-      <input type="text" placeholder="Ingresa tu dirección" required [(ngModel)]="paciente.direccion" name="direccion" />
+      <input
+        type="text"
+        placeholder="Ingresa tu dirección"
+        required
+        [(ngModel)]="paciente.direccion"
+        name="direccion"
+      />
     </div>
 
     <div class="form-group">
       <label>Contraseña</label>
-      <input type="password" placeholder="Crea una contraseña segura" required [(ngModel)]="paciente.contrasena" name="contrasena" />
+      <input
+        type="password"
+        placeholder="Crea una contraseña segura"
+        required
+        [(ngModel)]="paciente.contrasena"
+        name="contrasena"
+      />
     </div>
 
     <button type="submit" class="btn">Crear Cuenta</button>
-
-    <p class="login-link">¿Ya tienes una cuenta? <a routerLink="/login">Inicia Sesión</a></p>
   </form>
 </main>

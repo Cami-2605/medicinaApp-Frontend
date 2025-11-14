@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -51,7 +51,7 @@ body {
   margin: 40px auto;
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .title {
@@ -91,7 +91,8 @@ label {
   margin-bottom: 5px;
 }
 
-input, select {
+input,
+select {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -99,12 +100,13 @@ input, select {
   background-color: #fdfdfd;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
   border-color: #007bff;
   outline: none;
 }
 
-.btn-submit {
+.btn {
   align-self: flex-end;
   background-color: #007bff;
   color: #fff;
@@ -116,6 +118,6 @@ input:focus, select:focus {
   margin-top: 10px;
 }
 
-.btn-submit:hover {
+.btn:hover {
   background-color: #005dc1;
 }

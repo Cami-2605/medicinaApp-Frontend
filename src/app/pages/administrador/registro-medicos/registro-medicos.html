@@ -1,57 +1,21 @@
 <header class="navbar">
-  <div class="logo" routerLink="/admin-dashboard" style="cursor: pointer">
-    API de Citas Médicas
-  </div>
+  <div class="logo" routerLink="/admin-dashboard" style="cursor: pointer">API de Citas Médicas</div>
 </header>
 
 <main class="container">
   <h2 class="title">Crear Nuevo Perfil de Médico</h2>
-  <p class="subtitle">
-    Complete el formulario para registrar un nuevo médico en el sistema.
-  </p>
+  <p class="subtitle">Complete el formulario para registrar un nuevo médico en el sistema.</p>
 
   <form class="form" (ngSubmit)="registrarMedico()">
     <div class="form-row">
       <div class="form-group">
-        <label for="nombres">Nombres</label>
+        <label for="nombre">Nombre completo</label>
         <input
           type="text"
-          id="nombres"
-          placeholder="Ej: Juan"
-          [(ngModel)]="nuevoMedico.nombres"
-          name="nombres"
-        />
-      </div>
-      <div class="form-group">
-        <label for="apellidos">Apellidos</label>
-        <input
-          type="text"
-          id="apellidos"
-          placeholder="Ej: Pérez"
-          [(ngModel)]="nuevoMedico.apellidos"
-          name="apellidos"
-        />
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <label for="documento">Documento</label>
-        <input
-          type="text"
-          id="documento"
-          placeholder="Ej: 12345678X"
-          [(ngModel)]="nuevoMedico.documento"
-          name="documento"
-        />
-      </div>
-      <div class="form-group">
-        <label for="fecha">Fecha de nacimiento</label>
-        <input
-          type="date"
-          id="fecha"
-          [(ngModel)]="nuevoMedico.fechaNacimiento"
-          name="fechaNacimiento"
+          id="nombre"
+          placeholder="Ej: Juan Pérez"
+          [(ngModel)]="nuevoMedico.nombre"
+          name="nombre"
         />
       </div>
     </div>
@@ -63,69 +27,42 @@
           type="email"
           id="email"
           placeholder="ejemplo@correo.com"
-          [(ngModel)]="nuevoMedico.email"
+          [(ngModel)]="nuevoMedico.user.email"
           name="email"
         />
       </div>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="********"
+          [(ngModel)]="nuevoMedico.user.password"
+          name="password"
+        />
+      </div>
+    </div>
+
+    <div class="form-row">
       <div class="form-group">
         <label for="telefono">Teléfono</label>
         <input
           type="tel"
           id="telefono"
           placeholder="+34 600 000 000"
-          [(ngModel)]="nuevoMedico.telefono"
+          [(ngModel)]="nuevoMedico.telefonos[0].numero"
           name="telefono"
         />
       </div>
-    </div>
-
-    <div class="form-group full">
-      <label for="direccion">Dirección</label>
-      <input
-        type="text"
-        id="direccion"
-        placeholder="Calle Falsa 123, Ciudad"
-        [(ngModel)]="nuevoMedico.direccion"
-        name="direccion"
-      />
-    </div>
-
-    <div class="form-row">
       <div class="form-group">
         <label for="especialidad">Especialidad</label>
-        <select
-          id="especialidad"
-          [(ngModel)]="nuevoMedico.especialidad"
-          name="especialidad"
-        >
-          <option value="">Seleccione una especialidad</option>
-          <option>Cardiología</option>
-          <option>Pediatría</option>
-          <option>Dermatología</option>
-          <option>Neurología</option>
+        <select id="especialidad" [(ngModel)]="nuevoMedico.idEspecialidad" name="especialidad">
+          <option value="0">Seleccione una especialidad</option>
+          <option *ngFor="let e of especialidades" [value]="e.id">
+            {{ e.especialidad }}
+          </option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="usuario">Nombre de Usuario</label>
-        <input
-          type="text"
-          id="usuario"
-          placeholder="Ej: juan.perez"
-          [(ngModel)]="nuevoMedico.usuario"
-          name="usuario"
-        />
-      </div>
-    </div>
-
-    <div class="form-group full">
-      <label for="contraseña">Contraseña</label>
-      <input
-        type="password"
-        id="contraseña"
-        placeholder="********"
-        [(ngModel)]="nuevoMedico.contrasena"
-        name="contrasena"
-      />
     </div>
 
     <button type="submit" class="btn-submit">Registrar Médico</button>

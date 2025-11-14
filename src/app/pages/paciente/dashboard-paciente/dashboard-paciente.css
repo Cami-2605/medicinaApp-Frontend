@@ -132,7 +132,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   text-align: left;
   padding: 10px;
   border-bottom: 1px solid #eee;
@@ -208,7 +209,7 @@ th, td {
 }
 
 /* Botón Cerrar Sesión */
-.btn-logout {
+.logout {
   background-color: #dc3545; /* rojo elegante */
   color: white;
   border: none;
@@ -219,11 +220,11 @@ th, td {
   transition: background 0.3s, transform 0.1s;
 }
 
-.btn-logout:hover {
+.logout:hover {
   background-color: #c82333;
   transform: scale(1.03);
 }
 
-.btn-logout:active {
+.logout:active {
   transform: scale(0.97);
 }

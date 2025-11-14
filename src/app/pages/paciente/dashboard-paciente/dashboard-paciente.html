@@ -1,131 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Paciente</title>
-  <link rel="stylesheet" href="dashboard-paciente.css">
-</head>
-<body>
-  <!-- Header -->
-  <header class="header">
-    <div class="logo">API de Citas Médicas</div>
-    <nav class="nav">
-      <a routerLink="/dashboard-paciente" class="nav-link active">Inicio</a>
-      <a routerLink="/agendar-cita" class="nav-link">Agendar Cita</a>
-      <a routerLink="/mis-citas" class="nav-link">Mis Citas</a>
-      <a routerLink="/mis-formulas" class="nav-link">Mis Fórmulas</a>
-      <a routerLink="/perfil-paciente" class="nav-link">Mi Perfil</a>
-      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="perfil" class="user-icon">
-      <button class="btn-logout" routerLink="/login">Cerrar sesión</button>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Paciente</title>
+    <link rel="stylesheet" href="dashboard-paciente.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">API de Citas Médicas</div>
+      <nav class="nav">
+        <a routerLink="/paciente/dashboard" class="nav-link active">Inicio</a>
+        <a routerLink="/paciente/agendar-cita" class="nav-link">Agendar Cita</a>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+          alt="perfil"
+          class="user-icon"
+        />
+        <button class="logout" (click)="cerrarSesion()">Cerrar sesión</button>
+      </nav>
+    </header>
 
-  <!-- Main -->
-  <main class="main-content">
-    <section class="left-section">
-      <div class="welcome">
-        <div>
-          <h2>Bienvenido, {{ nombrePaciente }}</h2>
-          <p>Gestiona tu información personal y tus citas médicas.</p>
-        </div>
-        <button class="btn-blue" (click)="agendarCita()">+ Agendar Nueva Cita</button>
-      </div>
-
-      <!-- Mis Citas -->
-      <div class="card">
-        <div class="card-header">
-          <h3>Mis Citas</h3>
-          <div class="tabs">
-            <button class="tab" [class.active]="vistaCitas === 'proximas'" (click)="cambiarVista('proximas')">Próximas</button>
-            <button class="tab" [class.active]="vistaCitas === 'pasadas'" (click)="cambiarVista('pasadas')">Pasadas</button>
+    <!-- Main -->
+    <main class="main-content">
+      <section class="left-section">
+        <div class="welcome">
+          <div>
+            <h2>Bienvenido, {{ perfil.nombre }}</h2>
+            <p>Gestiona tu información personal y tus citas médicas.</p>
           </div>
+          <button class="btn-blue" (click)="agendarCita()">+ Agendar Nueva Cita</button>
         </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Fecha y Hora</th>
-              <th>Médico</th>
-              <th>Especialidad</th>
-              <th>Estado</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let cita of citas">
-              <td>{{ cita.fecha }}<br><small>{{ cita.hora }}</small></td>
-              <td>{{ cita.medico }}</td>
-              <td>{{ cita.especialidad }}</td>
-              <td><span class="status confirmed">{{ cita.estado }}</span></td>
-              <td><a href="#" class="cancel" (click)="cancelarCita(cita)">Cancelar</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <!-- Mis Citas -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Mis Citas</h3>
+            <div class="tabs">
+              <button
+                class="tab"
+                [class.active]="vistaCitas === 'proximas'"
+                (click)="cambiarVista('proximas')"
+              >
+                Próximas
+              </button>
+              <button
+                class="tab"
+                [class.active]="vistaCitas === 'pasadas'"
+                (click)="cambiarVista('pasadas')"
+              >
+                Pasadas
+              </button>
+            </div>
+          </div>
 
-      <!-- Mis Fórmulas Médicas -->
-      <div class="card">
-        <div class="card-header">
-          <h3>Mis Fórmulas Médicas</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha y Hora</th>
+                <th>Médico</th>
+                <th>Especialidad</th>
+                <th>Estado</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cita of citas">
+                <td>
+                  {{ cita.fecha }}<br /><small>{{ cita.hora }}</small>
+                </td>
+                <td>{{ cita.medicoNombre }}</td>
+                <td>{{ cita.especialidadNombre }}</td>
+                <td>
+                  <span class="status confirmed">{{ cita.estadoCita }}</span>
+                </td>
+                <td>
+                  <a href="#" class="cancel" (click)="cancelarCita(cita, $event)">Cancelar</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Fecha</th>
-              <th>Médico</th>
-              <th>Medicamento</th>
-              <th>Dosis</th>
-              <th>Duración</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let formula of formulas">
-              <td>{{ formula.fecha }}</td>
-              <td>{{ formula.medico }}</td>
-              <td>{{ formula.medicamento }}</td>
-              <td>{{ formula.dosis }}</td>
-              <td>{{ formula.duracion }}</td>
-              <td><a href="#" class="details" (click)="verDetalles(formula)">Ver Detalles</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+        <!-- Mis Fórmulas Médicas -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Mis Fórmulas Médicas</h3>
+          </div>
 
-    <!-- Perfil -->
-    <aside class="profile-card">
-      <h3>Mi Perfil</h3>
-      <form (ngSubmit)="actualizarPerfil()">
-        <div class="form-group">
-          <label>Nombre</label>
-          <input type="text" [(ngModel)]="perfil.nombre" name="nombre">
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Médico</th>
+                <th>Medicamento</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let formula of formulas">
+                <td>{{ formula.fechaRegistro }}</td>
+                <td>{{ formula.medicoNombre }}</td>
+                <td>{{ formula.medicamentos }}</td>
+                <td>
+                  <a href="#" class="details" (click)="verDetalles(formula, $event)"
+                    >Ver Detalles</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="form-group">
-          <label>Correo Electrónico</label>
-          <input type="email" [(ngModel)]="perfil.email" name="email">
-        </div>
-        <div class="form-group">
-          <label>Teléfono</label>
-          <input type="text" [(ngModel)]="perfil.telefono" name="telefono">
-        </div>
-        <div class="form-group">
-          <label>Fecha de Nacimiento</label>
-          <input type="date" [(ngModel)]="perfil.fechaNacimiento" name="fechaNacimiento">
-        </div>
-        <div class="form-group">
-          <label>Género</label>
-          <select [(ngModel)]="perfil.genero" name="genero">
-            <option>Femenino</option>
-            <option>Masculino</option>
-            <option>Otro</option>
-          </select>
-        </div>
-        <button class="btn-green" type="submit">Actualizar Perfil</button>
-      </form>
-    </aside>
-  </main>
-</body>
+      </section>
+
+      <!-- Perfil -->
+      <aside class="profile-card">
+        <h3>Mi Perfil</h3>
+        <form (ngSubmit)="actualizarPerfil()">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" [(ngModel)]="perfil.nombre" name="nombre" />
+          </div>
+          <div class="form-group">
+            <label>Correo Electrónico</label>
+            <input type="email" [(ngModel)]="perfil.email" name="email" />
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="text" [(ngModel)]="perfil.telefono" name="telefono" />
+          </div>
+
+          <div class="form-group"></div>
+          <button class="btn-green" type="submit">Actualizar Perfil</button>
+        </form>
+      </aside>
+    </main>
+  </body>
 </html>

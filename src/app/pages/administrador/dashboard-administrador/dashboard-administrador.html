@@ -2,14 +2,15 @@
   <div class="logo">API de Citas Médicas</div>
 
   <nav class="nav-links">
-    <a routerLink="/dashboard-administrador" routerLinkActive="active">Inicio</a>
-    <a routerLink="/registro-pacientes" routerLinkActive="active">Usuarios</a>
-    <a routerLink="/agregar-editar-especialidad" routerLinkActive="active">Especialidades</a>
-    <a routerLink="/agregar-editar-medicamento" routerLinkActive="active">Medicamentos</a>
-    <a routerLink="/agregar-administrador" routerLinkActive="active">Administradores</a>
+    <!-- Navegación usando métodos TS para respetar AuthGuard -->
+    <a (click)="irDashboard()" routerLinkActive="active">Inicio</a>
+    <a (click)="editarPaciente()" routerLinkActive="active">Usuarios</a>
+    <a (click)="gestionarEspecialidades()" routerLinkActive="active">Especialidades</a>
+    <a (click)="gestionarMedicamentos()" routerLinkActive="active">Medicamentos</a>
+    <a (click)="crearAdministrador()" routerLinkActive="active">Administradores</a>
   </nav>
 
-  <button class="logout" routerLink="/login">Cerrar sesión</button>
+  <button class="logout" (click)="cerrarSesion()">Cerrar sesión</button>
 </header>
 
 <main class="container">
@@ -20,21 +21,19 @@
     <div class="card">
       <h3>Gestión de usuarios</h3>
       <div class="buttons">
-        <button class="btn blue" routerLink="/registro-medicos">Crear médico</button>
-        <button class="btn gray" routerLink="/agregar-administrador">Crear administrador</button>
-        <button class="btn edit" routerLink="/registro-pacientes">Editar paciente</button>
+        <button class="btn blue" (click)="crearMedico()">Crear médico</button>
+        <button class="btn gray" (click)="crearAdministrador()">Crear administrador</button>
+        <button class="btn edit" (click)="editarPaciente()">Editar paciente</button>
       </div>
     </div>
 
     <div class="card">
       <h3>Gestión de catálogos</h3>
       <div class="buttons">
-        <button class="btn blue" routerLink="/agregar-editar-especialidad">
+        <button class="btn blue" (click)="gestionarEspecialidades()">
           Gestionar especialidades
         </button>
-        <button class="btn blue" routerLink="/agregar-editar-medicamento">
-          Gestionar medicamentos
-        </button>
+        <button class="btn blue" (click)="gestionarMedicamentos()">Gestionar medicamentos</button>
       </div>
     </div>
   </section>
@@ -43,7 +42,7 @@
     <div class="report-card active">
       <div class="icon">📅</div>
       <div>
-        <p class="number">15</p>
+        <p class="number">{{ citasActivasHoy }}</p>
         <p class="label">Citas activas hoy</p>
       </div>
     </div>
@@ -51,7 +50,7 @@
     <div class="report-card canceled">
       <div class="icon">❌</div>
       <div>
-        <p class="number">3</p>
+        <p class="number">{{ citasCanceladas }}</p>
         <p class="label">Citas canceladas</p>
       </div>
     </div>
@@ -59,7 +58,7 @@
     <div class="report-card patients">
       <div class="icon">👤</div>
       <div>
-        <p class="number">120</p>
+        <p class="number">{{ pacientesActivos }}</p>
         <p class="label">Pacientes activos</p>
       </div>
     </div>

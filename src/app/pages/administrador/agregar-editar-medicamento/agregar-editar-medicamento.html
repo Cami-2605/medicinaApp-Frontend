@@ -1,40 +1,66 @@
 <header class="navbar">
-  <div class="logo" routerLink="/admin-dashboard" style="cursor: pointer">
-    API de Citas Médicas
-  </div>
+  <div class="logo" routerLink="/admin-dashboard" style="cursor: pointer">API de Citas Médicas</div>
 </header>
 
 <main class="container">
-  <h2 class="title">Agregar/Editar Medicamento</h2>
+  <h2 class="title">Agregar Medicamento</h2>
 
   <form class="form" (ngSubmit)="guardar()">
     <div class="form-group">
       <label for="nombre">Nombre</label>
-      <input type="text" id="nombre" placeholder="Ingrese el nombre del medicamento" [(ngModel)]="medicamento.nombre" name="nombre">
+      <input
+        type="text"
+        id="nombre"
+        placeholder="Ingrese el nombre del medicamento"
+        [(ngModel)]="medicamento.nombre"
+        name="nombre"
+      />
     </div>
 
     <div class="form-group">
       <label for="descripcion">Descripción</label>
-      <textarea id="descripcion" rows="3" placeholder="Ingrese una descripción del medicamento"
-        [(ngModel)]="medicamento.descripcion" name="descripcion"></textarea>
+      <textarea
+        id="descripcion"
+        rows="3"
+        placeholder="Ingrese una descripción del medicamento"
+        [(ngModel)]="medicamento.descripcion"
+        name="descripcion"
+      ></textarea>
     </div>
 
     <div class="form-group">
       <label for="presentacion">Presentación</label>
-      <input type="text" id="presentacion" placeholder="Ej: Tabletas, Cápsulas, Jarabe"
-        [(ngModel)]="medicamento.presentacion" name="presentacion">
+      <input
+        type="text"
+        id="presentacion"
+        placeholder="Ej: Tabletas, Cápsulas, Jarabe"
+        [(ngModel)]="medicamento.presentacion"
+        name="presentacion"
+      />
     </div>
 
     <div class="form-group">
       <label for="dosis">Dosis estándar/Concentración</label>
-      <input type="text" id="dosis" placeholder="Ej: 500mg, 10mg/ml" [(ngModel)]="medicamento.dosis" name="dosis">
+      <input
+        type="text"
+        id="dosis"
+        placeholder="Ej: 500mg, 10mg/ml"
+        [(ngModel)]="medicamento.dosis"
+        name="dosis"
+      />
     </div>
 
     <div class="form-group estado">
       <label>Estado</label>
       <div class="estado-options">
-        <label><input type="radio" name="estado" value="activo" [(ngModel)]="medicamento.estado"> Activo</label>
-        <label><input type="radio" name="estado" value="inactivo" [(ngModel)]="medicamento.estado"> Inactivo</label>
+        <label
+          ><input type="radio" name="estado" value="activo" [(ngModel)]="medicamento.estado" />
+          Activo</label
+        >
+        <label
+          ><input type="radio" name="estado" value="inactivo" [(ngModel)]="medicamento.estado" />
+          Inactivo</label
+        >
       </div>
     </div>
 

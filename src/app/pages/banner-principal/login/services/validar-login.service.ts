@@ -42,16 +42,16 @@ export class ValidarLoginService {
     // Redirigir según rol
     switch (decoded.rol) {
       case 'ROLE_PACIENTE':
-        this.router.navigate(['/paciente']);
+        this.router.navigate(['/paciente/dashboard']);
+        break;
+      case 'ROLE_MEDICO':
+        this.router.navigate(['/medico/dashboard']);
         break;
       case 'ROLE_ADMIN':
-        this.router.navigate(['/admin']);
-        break;
-      case 'ROLE_USUARIO':
-        this.router.navigate(['/usuario']);
+        this.router.navigate(['/admin/dashboard']);
         break;
       default:
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
     }
   }
 }

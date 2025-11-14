@@ -82,4 +82,8 @@ export class PacienteCitaService {
       `${this.apiUrl}/citas/medicos/${idMedico}/agenda`
     );
   }
+
+  obtenerAgendaPorId(idAgenda: number): Observable<AgendaDto> {
+    return this.http.get<AgendaDto>(`${this.apiUrl}/cita/agenda/${idAgenda}`);
+  }
 }

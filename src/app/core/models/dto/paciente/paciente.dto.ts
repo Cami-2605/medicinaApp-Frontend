@@ -1,3 +1,4 @@
+import { CitaDto } from '../cita/cita.dto';
 import { CiudadDto } from '../common/ciudad.dto';
 import { TelefonoDto } from '../common/telefono/telefono.dto';
 import { UserDto } from '../common/user/user.dto';
@@ -10,6 +11,6 @@ export interface PacienteDto {
   idEps: number;
   ciudad: CiudadDto;
   telefonos: TelefonoDto[];
-  citas: CiudadDto[];
+  citas: CitaDto[];
   formulasMedicas: FormulaDto[];
 }
