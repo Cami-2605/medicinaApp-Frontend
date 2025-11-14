@@ -9,18 +9,16 @@ import { routes } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { HttpToastInterceptor } from './core/interceptors/toastService';
-import { ToastService } from './components/toast/service/toast.service';
-import { provideClientHydration } from '@angular/platform-browser';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
+import { ToastService } from './components/toast/service/toast.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(withInterceptors([JwtInterceptor])),
+    provideHttpClient(withInterceptors([JwtInterceptor, HttpToastInterceptor])),
     importProvidersFrom(FormsModule, ReactiveFormsModule),
-    provideHttpClient(withInterceptors([HttpToastInterceptor])),
     ToastService,
   ],
 };

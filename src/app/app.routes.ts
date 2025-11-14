@@ -1,8 +1,5 @@
 import { Routes } from '@angular/router';
 
-// 🧍‍♂️ Login
-import { LoginComponent } from './pages/banner-principal/login/login.component';
-
 // 👩‍⚕️ Paciente
 import { RegistroPacientesComponent } from './pages/administrador/registro-pacientes/registro-pacientes';
 import { DashboardPacienteComponent } from './pages/paciente/dashboard-paciente/dashboard-paciente';
@@ -23,6 +20,7 @@ import { RegistroMedicosComponent } from './pages/administrador/registro-medicos
 import { AgregarEditarMedicamentoComponent } from './pages/administrador/agregar-editar-medicamento/agregar-editar-medicamento';
 import { AgregarEditarEspecialidadComponent } from './pages/administrador/agregar-editar-especialidad/agregar-editar-especialidad';
 import { AgregarAdministradorComponent } from './pages/administrador/agregar-administrador/agregar-administrador';
+import { LoginComponent } from './pages/banner-principal/login/login.component';
 
 export const routes: Routes = [
   // Página principal

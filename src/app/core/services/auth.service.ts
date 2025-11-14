@@ -1,6 +1,6 @@
 // auth.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { API_URL } from '../../app.config';
@@ -24,11 +24,7 @@ export class AuthService {
    * Método para iniciar sesión enviando el LoginDto al backend
    */
   login(loginDto: LoginDto): Observable<TokenDto> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-
-    return this.http.post<MensajeDto<TokenDto>>(`${this.apiUrl}/login`, loginDto, { headers }).pipe(
+    return this.http.post<MensajeDto<TokenDto>>(`${this.apiUrl}/login`, loginDto).pipe(
       map((response) => {
         // El backend envía MensajeDto<TokenDto>, extraemos TokenDto
         if (response && !response.error) {
