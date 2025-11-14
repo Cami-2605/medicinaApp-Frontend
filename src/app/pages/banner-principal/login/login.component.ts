@@ -1,34 +1,75 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  FormBuilder,
+  Validators,
+  FormGroup,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../core/services/auth.service';
+import { LoginDto } from '../../../core/models/dto/auth/login.dto';
+import { ValidarLoginService } from './services/validar-login.service';
+import { ToastService } from '../../../components/toast/service/toast.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './login.html',
-  styleUrls: ['./login.css'],
+  styleUrl: './login.css',
 })
 export class LoginComponent {
-  usuario: string = '';
-  password: string = '';
+  loginForm: FormGroup;
 
-  constructor(private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private validarLoginService: ValidarLoginService,
+    private toast: ToastService,
+    private router: Router
+  ) {
+    // Create login form
+    // Crear formulario de login
+    this.loginForm = this.fb.group({
+      usuario: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    });
+  }
 
-  login() {
-    const user = this.usuario.trim().toLowerCase();
-    const pass = this.password;
-
-    // Simulación de autenticación según el tipo de usuario
-    if (user === 'admin' && pass === '1234') {
-      this.router.navigate(['/dashboard-administrador']);
-    } else if (user === 'medico' && pass === '1234') {
-      this.router.navigate(['/medico-dashboard']);
-    } else if (user === 'paciente' && pass === '1234') {
-      this.router.navigate(['/dashboard-paciente']);
-    } else {
-      alert('Usuario o contraseña incorrectos');
+  /**
+   * Método que se ejecuta al enviar el formulario
+   * Method executed when submitting the form
+   */
+  login(): void {
+    if (this.loginForm.invalid) {
+      this.toast.show('Debes llenar todos los campos', 'error');
+      return;
     }
+
+    const loginDto: LoginDto = {
+      email: this.loginForm.value.usuario.trim(),
+      password: this.loginForm.value.password,
+    };
+
+    // Call AuthService to connect with backend
+    // Llamar al AuthService para conectar con el backend
+    this.authService.login(loginDto).subscribe({
+      next: (tokenDto) => {
+        // Save token
+        // Guardar token
+        localStorage.setItem('token', tokenDto.token);
+
+        // Redirect based on role
+        // Redirigir según el rol
+        this.validarLoginService.redirigirSegunRol();
+      },
+      error: () => {
+        // Show error toast
+        // Mostrar toast de error
+        this.toast.show('Credenciales incorrectas', 'error');
+      },
+    });
   }
 }
