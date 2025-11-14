@@ -1,7 +1,7 @@
 import {
   ApplicationConfig,
   provideBrowserGlobalErrorListeners,
-  provideZonelessChangeDetection,
+  provideZoneChangeDetection,
   importProvidersFrom,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
@@ -16,7 +16,7 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideZonelessChangeDetection(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(withInterceptors([JwtInterceptor])),
     importProvidersFrom(FormsModule, ReactiveFormsModule),

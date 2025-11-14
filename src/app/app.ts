@@ -2,7 +2,7 @@ import { Component, Inject, PLATFORM_ID, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Toast } from './components/toast/toast';
 import { CommonModule } from '@angular/common';
-import { Router } from 'express';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
