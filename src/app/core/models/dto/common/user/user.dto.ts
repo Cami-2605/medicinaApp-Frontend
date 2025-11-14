@@ -1,4 +1,4 @@
-import { EstadoUser } from '../../enums/estado-user.enum';
+import { EstadoUser } from '../../../enums/estado-user.enum';
 
 export interface UserDto {
   email: string;

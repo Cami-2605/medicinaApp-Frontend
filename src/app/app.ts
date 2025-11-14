@@ -1,12 +1,19 @@
-import { Component, signal } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Toast } from './components/toast/toast';
+import { CommonModule } from '@angular/common';
+import { Router } from 'express';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterOutlet, Toast, CommonModule],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('medicinaApp-Frontend');
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router) {}
 }
