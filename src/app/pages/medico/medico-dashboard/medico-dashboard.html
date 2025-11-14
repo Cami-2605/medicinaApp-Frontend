@@ -1,20 +1,13 @@
 <header class="navbar">
-  <div class="logo">
-    <span class="text"><strong>API de Citas Médicas</strong></span>
-  </div>
-
+  <div class="logo"><strong>API de Citas Médicas</strong></div>
   <nav class="nav-links">
-    <a routerLink="/medico-dashboard" routerLinkActive="active">Inicio</a>
-    <a routerLink="/agenda" routerLinkActive="active">Agenda</a>
-    <a routerLink="/pacientes" routerLinkActive="active">Mis Pacientes</a>
-    <a routerLink="/crear-formula-medica" routerLinkActive="active">Agregar fórmula</a>
+    <a routerLink="/medico/dashboard" routerLinkActive="active">Inicio</a>
   </nav>
 
-  <div class="user-info">
-    <div class="user-avatar">ER</div>
+  <div class="user-info" *ngIf="medico">
+    <div class="user-avatar">{{ medico.nombre.charAt(0) }}</div>
     <div class="user-details">
-      <span class="user-name">Dr. Eduardo Ríos</span>
-      <span class="user-role">Cardiólogo</span>
+      <span class="user-name">{{ medico.nombre }}</span>
     </div>
     <a href="#" class="logout" (click)="logout()">Salir</a>
   </div>
@@ -35,14 +28,23 @@
         <table>
           <thead>
             <tr>
-              <th>D</th><th>L</th><th>M</th><th>M</th><th>J</th><th>V</th><th>S</th>
+              <th>D</th>
+              <th>L</th>
+              <th>M</th>
+              <th>M</th>
+              <th>J</th>
+              <th>V</th>
+              <th>S</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let semana of calendario">
-              <td *ngFor="let dia of semana" 
-                  [class.selected]="dia === diaSeleccionado"
-                  (click)="dia && seleccionarDia(dia)">
+              <td
+                *ngFor="let dia of semana"
+                [class.selected]="dia === diaSeleccionado"
+                [style.background-color]="dia ? calendarioColor[dia] : 'transparent'"
+                (click)="dia && seleccionarDia(dia)"
+              >
                 {{ dia || '' }}
               </td>
             </tr>
@@ -54,48 +56,14 @@
     <!-- CITAS DEL DÍA -->
     <section class="appointments">
       <div class="appointments-header">
-        <h3>Citas para el {{ diaSeleccionado }} de {{ mesActual }}</h3>
-        <div class="filter-buttons">
-          <button *ngFor="let filtro of filtros" 
-                  [class.active]="filtroActivo === filtro"
-                  (click)="setFiltro(filtro)">
-            {{ filtro }}
-          </button>
-        </div>
+        <h3>Citas AGENDADAS para el {{ diaSeleccionado }} de {{ mesActual }}</h3>
       </div>
 
-      <div *ngFor="let cita of citasFiltradas" 
-           class="appointment-card" 
-           [ngClass]="cita.color">
-        <strong>{{ cita.paciente }}</strong>
-        <span>{{ cita.hora }}</span>
-        <p>{{ cita.motivo }}</p>
+      <div *ngFor="let detalle of citasDiaSeleccionado" class="appointment-card">
+        <strong>ID Cita: {{ detalle.cita.id }}</strong>
+        <span>Hora: {{ detalle.agenda.horaInicio }} - {{ detalle.agenda.horaFin }}</span>
+        <p>Observaciones: {{ detalle.cita.observaciones || 'Ninguna' }}</p>
       </div>
     </section>
   </div>
-
-  <!-- PRÓXIMAS CITAS -->
-  <section class="next-appointments">
-    <h3>Próximas citas</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Paciente</th>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Motivo</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let cita of proximasCitas">
-          <td>{{ cita.paciente }}</td>
-          <td>{{ cita.fecha }}</td>
-          <td>{{ cita.hora }}</td>
-          <td>{{ cita.motivo }}</td>
-          <td><a href="#" class="details-link" (click)="verDetalles(cita)">Ver detalles</a></td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
 </main>
