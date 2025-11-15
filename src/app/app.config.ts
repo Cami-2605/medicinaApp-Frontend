@@ -24,4 +24,4 @@ export const appConfig: ApplicationConfig = {
   ],
 };
 
-export const API_URL = { baseUrl: 'http://localhost:8080' };
+export const API_URL = { baseUrl: 'https://medicinaapp.onrender.com' };
